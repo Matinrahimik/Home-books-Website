@@ -73,18 +73,6 @@ body {
     transition: background-position 0.1s ease;
 }
 
-/* Add navbar animation keyframes */
-@keyframes slideDown {
-    0% {
-        opacity: 0;
-        transform: translateX(-50%) translateY(-100%);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(-50%) translateY(0);
-    }
-}
-
 /* Navigation */
 .navbar {
     position: fixed;
@@ -106,9 +94,6 @@ body {
     width: 57%;
     min-width: min-content;
     max-width: 1200px;
-    opacity: 0;
-    animation: slideDown 0.8s ease-out forwards;
-    animation-delay: 1.8s;
 }
 
 .logo {
@@ -180,8 +165,11 @@ body {
     border: none;
     border-radius: 28px;
     cursor: pointer;
-    font-weight: 500;
+    font-weight: normal;
     transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
 }
 
 .nav-links .demo-btn:hover {
@@ -568,17 +556,33 @@ body {
 
 /* Hero Section */
 .hero {
-    min-height: 100vh;
     position: relative;
-    width: 100%;
-    padding: 0 8%;
+    min-height: 100vh;
     display: flex;
     align-items: center;
+    justify-content: flex-start;
+    padding: 8rem 8% 12rem;
+    overflow: visible;
+}
+
+.hero-mockup {
+    position: absolute;
+    right: 12%;
+    bottom: -20%;
+    transform: rotate(20deg);
+    width: 30%;
+    z-index: 1;
+    opacity: 0.9;
+}
+
+.hero-mockup img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
 }
 
 .hero-content {
     position: relative;
-    z-index: 2;
     text-align: left;
     width: 100%;
     max-width: 1400px;
@@ -587,6 +591,7 @@ body {
     flex-direction: column;
     min-height: 85vh;
     margin: 0 auto;
+    z-index: 2;
 }
 
 /* Animation keyframes */
@@ -652,7 +657,7 @@ body {
     cursor: pointer;
     font-size: 1.1rem;
     transition: all 0.3s ease;
-    font-weight: 500;
+    font-weight: normal;
     margin-top: auto;
     margin-bottom: 5%;
     margin-left: 0%;
@@ -661,6 +666,8 @@ body {
     animation: fadeSlideUp 1s ease-out forwards;
     animation-delay: 0.6s;
     line-height: 1;
+    text-decoration: none;
+    display: inline-block;
 }
 
 .hero .demo-btn:hover {
@@ -786,7 +793,7 @@ body {
     opacity: 0;
     transform: translateY(60px);
     animation: fadeSlideUp 1.2s ease-out forwards;
-    animation-delay: 0.4s;
+    animation-delay: 0.2s;
     animation-play-state: paused;
 }
 
@@ -803,7 +810,7 @@ body {
     opacity: 0;
     transform: translateY(60px);
     animation: fadeSlideUp 1.2s ease-out forwards;
-    animation-delay: 0.6s;
+    animation-delay: 0.3s;
     animation-play-state: paused;
 }
 
@@ -839,7 +846,7 @@ body {
     opacity: 0;
     transform: translateY(60px);
     animation: fadeSlideUp 1.2s ease-out forwards;
-    animation-delay: 0.4s;
+    animation-delay: 0.2s;
     animation-play-state: paused;
 }
 
@@ -856,7 +863,7 @@ body {
     opacity: 0;
     transform: translateY(60px);
     animation: fadeSlideUp 1.2s ease-out forwards;
-    animation-delay: 0.6s;
+    animation-delay: 0.3s;
     animation-play-state: paused;
 }
 
@@ -1007,7 +1014,7 @@ body {
 
 .quotes.animate h2 {
     animation: fadeSlideUp 0.8s ease-out forwards;
-    animation-delay: 0.2s;
+    animation-delay: 0.1s;
 }
 
 .quotes-carousel {
@@ -1017,7 +1024,7 @@ body {
 
 .quotes.animate .quotes-carousel {
     animation: fadeSlideUp 0.8s ease-out forwards;
-    animation-delay: 0.4s;
+    animation-delay: 0.2s;
 }
 
 .quotes-carousel {
@@ -1130,27 +1137,32 @@ body {
 
 .features.animate h2 {
     animation: fadeSlideUp 0.8s ease-out forwards;
-    animation-delay: 0.2s;
+    animation-delay: 0.1s;
+}
+
+.features.animate .feature:nth-child(1) {
+    animation: fadeSlideUp 0.8s ease-out forwards;
+    animation-delay: 0.1s;
 }
 
 .features.animate .feature:nth-child(2) {
     animation: fadeSlideUp 0.8s ease-out forwards;
-    animation-delay: 0.3s;
+    animation-delay: 0.15s;
 }
 
 .features.animate .feature:nth-child(3) {
     animation: fadeSlideUp 0.8s ease-out forwards;
-    animation-delay: 0.4s;
+    animation-delay: 0.2s;
 }
 
 .features.animate .feature:nth-child(4) {
     animation: fadeSlideUp 0.8s ease-out forwards;
-    animation-delay: 0.5s;
+    animation-delay: 0.25s;
 }
 
 .features.animate .feature:nth-child(5) {
     animation: fadeSlideUp 0.8s ease-out forwards;
-    animation-delay: 0.6s;
+    animation-delay: 0.3s;
 }
 
 .feature {
@@ -1223,7 +1235,7 @@ body {
 
 .faq.animate h2 {
     animation: fadeSlideUp 0.8s ease-out forwards;
-    animation-delay: 0.2s;
+    animation-delay: 0.1s;
 }
 
 .faq-item {
@@ -1234,32 +1246,32 @@ body {
 
 .faq.animate .faq-item:nth-child(1) {
     animation: fadeSlideUp 0.8s ease-out forwards;
-    animation-delay: 0.3s;
+    animation-delay: 0.15s;
 }
 
 .faq.animate .faq-item:nth-child(2) {
     animation: fadeSlideUp 0.8s ease-out forwards;
-    animation-delay: 0.4s;
+    animation-delay: 0.2s;
 }
 
 .faq.animate .faq-item:nth-child(3) {
     animation: fadeSlideUp 0.8s ease-out forwards;
-    animation-delay: 0.5s;
+    animation-delay: 0.25s;
 }
 
 .faq.animate .faq-item:nth-child(4) {
     animation: fadeSlideUp 0.8s ease-out forwards;
-    animation-delay: 0.6s;
+    animation-delay: 0.3s;
 }
 
 .faq.animate .faq-item:nth-child(5) {
     animation: fadeSlideUp 0.8s ease-out forwards;
-    animation-delay: 0.7s;
+    animation-delay: 0.35s;
 }
 
 .faq.animate .faq-item:nth-child(6) {
     animation: fadeSlideUp 0.8s ease-out forwards;
-    animation-delay: 0.8s;
+    animation-delay: 0.4s;
 }
 
 .faq-container {
@@ -1473,7 +1485,7 @@ footer a:hover {
     }
     /* Hero section */
     .hero h1 { 
-        font-size: clamp(3.8rem, 8vw, 4.5rem);
+        font-size: clamp(3.8rem, 8.5vw, 4.5rem);
         line-height: 1.1;
         margin-bottom: 0.35em;
     }
@@ -2212,5 +2224,22 @@ footer a:hover {
     .scroll-to-top svg {
         width: 1.35rem;
         height: 1.35rem;
+    }
+}
+
+/* Add mobile styles */
+@media (max-width: 768px) {
+    .hero-mockup {
+        width: 45%;
+        bottom: -10%;
+        right: 8%;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-mockup {
+        width: 50%;
+        bottom: 0%;
+        right: 12%;
     }
 } 

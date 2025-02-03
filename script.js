@@ -138,19 +138,15 @@ setupCarousel('.quotes-carousel');
 
 // Enhanced intersection observer for animations
 const observerOptions = {
-    threshold: 0.2,
-    rootMargin: '-50px'
+    threshold: 0.05,
+    rootMargin: '0px 0px -10% 0px'
 };
 
 const animationObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('animate');
-            // Optional: Remove observer after animation
-            // animationObserver.unobserve(entry.target);
-        } else {
-            // Optional: Remove animation when out of view for replay
-            entry.target.classList.remove('animate');
+            animationObserver.unobserve(entry.target);
         }
     });
 }, observerOptions);
@@ -225,9 +221,7 @@ const challengesObserver = new IntersectionObserver((entries) => {
             challengesObserver.unobserve(entry.target);
         }
     });
-}, {
-    threshold: 0.2
-});
+}, observerOptions);
 
 if (challengesSection) {
     challengesObserver.observe(challengesSection);
@@ -242,9 +236,7 @@ const quotesObserver = new IntersectionObserver((entries) => {
             quotesObserver.unobserve(entry.target);
         }
     });
-}, {
-    threshold: 0.2
-});
+}, observerOptions);
 
 if (quotesSection) {
     quotesObserver.observe(quotesSection);
@@ -259,9 +251,7 @@ const featuresObserver = new IntersectionObserver((entries) => {
             featuresObserver.unobserve(entry.target);
         }
     });
-}, {
-    threshold: 0.2
-});
+}, observerOptions);
 
 if (featuresSection) {
     featuresObserver.observe(featuresSection);
@@ -276,9 +266,7 @@ const faqObserver = new IntersectionObserver((entries) => {
             faqObserver.unobserve(entry.target);
         }
     });
-}, {
-    threshold: 0.2
-});
+}, observerOptions);
 
 if (faqSection) {
     faqObserver.observe(faqSection);
