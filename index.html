@@ -243,6 +243,37 @@
             if (missionSection) {
                 observer.observe(missionSection);
             }
+
+            // Add active state handling
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+
+            function updateActiveLink() {
+                const fromTop = window.scrollY + 100;
+
+                let currentSection = null;
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    const sectionBottom = sectionTop + section.offsetHeight;
+                    
+                    if (fromTop >= sectionTop && fromTop < sectionBottom) {
+                        currentSection = section;
+                    }
+                });
+
+                if (currentSection) {
+                    const currentId = currentSection.getAttribute('id');
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${currentId}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            }
+
+            window.addEventListener('scroll', updateActiveLink);
+            updateActiveLink(); // Initial check
         });
     </script>
 </body>

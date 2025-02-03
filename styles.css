@@ -83,14 +83,14 @@ body {
     align-items: center;
     padding: 0.75rem;
     padding-left: 1.5rem;
-    background-color: rgba(254, 246, 225, 0.8);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(25px) saturate(180%);
+    -webkit-backdrop-filter: blur(25px) saturate(180%);
     z-index: 1000;
     border-radius: 100px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    width: 84%;
-    border: 1px solid rgba(255, 255, 255, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+    width: 57%;
     opacity: 0;
     animation: slideDown 0.8s ease-out forwards;
     animation-delay: 1.8s;
@@ -109,7 +109,7 @@ body {
 }
 
 .logo img {
-    height: 35.2px;
+    height: 28px;
     width: auto;
 }
 
@@ -129,17 +129,19 @@ body {
     font-weight: 500;
     text-decoration: none;
     color: var(--text-color);
-    font-size: 1.1rem;
+    font-size: 0.95rem;
     position: relative;
-    padding: 0.8rem 0.8rem 0.4rem 0.8rem;
+    padding: 0.6rem 0.8rem 0.4rem 0.8rem;
     border-radius: 100px;
     transition: all 0.3s ease;
     line-height: 1;
+    background-color: transparent;
 }
 
 .nav-links a:hover {
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 1);
     transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(42, 24, 16, 0.06);
 }
 
 .nav-links a::after {
@@ -148,10 +150,10 @@ body {
 
 .nav-links .demo-btn {
     font-family: 'ITC Avant Garde Pro', sans-serif;
-    background-color: transparent;
+    background-color: rgba(255, 255, 255, 1);
     color: var(--text-color);
-    padding: 0.9rem 1.5rem 0.6rem 1.5rem;
-    border: 1.5px solid var(--text-color);
+    padding: 0.7rem 1.2rem 0.5rem 1.2rem;
+    border: none;
     border-radius: 28px;
     cursor: pointer;
     font-size: 0.95rem;
@@ -159,13 +161,24 @@ body {
     font-weight: 500;
     margin-left: 0;
     line-height: 1;
+    box-shadow: 0 4px 12px rgba(42, 24, 16, 0.08);
 }
 
 .nav-links .demo-btn:hover {
     background-color: var(--text-color);
     color: var(--bg-color);
     transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(42, 24, 16, 0.1);
+    box-shadow: 0 6px 16px rgba(42, 24, 16, 0.15);
+}
+
+.nav-links a.active {
+    background-color: rgba(255, 255, 255, 1);
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(42, 24, 16, 0.06);
+}
+
+.nav-links a.active:hover {
+    transform: scale(1.05);
 }
 
 /* Hero Section */
@@ -218,7 +231,7 @@ body {
 
 .hero h1 {
     font-family: 'Redaction', serif;
-    font-size: 6rem;
+    font-size: 4.5rem;
     margin-bottom: 2.2rem;
     line-height: 1;
     font-weight: bold;
@@ -231,7 +244,7 @@ body {
 
 .hero p {
     font-family: 'ITC Avant Garde Pro', sans-serif;
-    font-size: 2.577rem;
+    font-size: 1.933rem;
     margin-bottom: 0;
     color: var(--text-color);
     line-height: 1.3;
