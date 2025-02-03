@@ -96,7 +96,6 @@ body {
     align-items: center;
     padding: 0.75rem;
     padding-left: 1.5rem;
-    padding-right: 0.75rem;
     background-color: rgba(255, 255, 255, 0.75);
     backdrop-filter: blur(25px) saturate(180%);
     -webkit-backdrop-filter: blur(25px) saturate(180%);
@@ -232,6 +231,7 @@ body {
 }
 
 @media (max-width: 1024px) {
+    html { font-size: 15px; }
     .navbar {
         width: 85%;
         padding: 0.65rem;
@@ -260,93 +260,105 @@ body {
     .logo img {
         height: 26px;
     }
+
+    .hero-content {
+        padding-top: 6rem;
+        min-height: 85vh;
+    }
 }
 
 /* Portrait tablet and mobile styles */
-@media (max-width: 1024px) and (orientation: portrait), (max-width: 768px) {
+@media (max-width: 1024px) and (orientation: portrait), (max-width: 820px) {
     .navbar {
-        width: 90%;
-        padding: 0.6rem;
-        padding-left: 1.1rem;
-        padding-right: 0.6rem;
+        width: 84%; /* 100% - (8% * 2) to account for the container padding */
+        padding: 0.75rem;
+        padding-left: 1.5rem;
     }
 
     .logo {
         margin-right: 0;
+        transform: scale(1.15);
+        transform-origin: left center;
+        transition: transform 0.3s ease;
     }
 
     .mobile-menu-btn {
         display: block;
+        margin-left: auto;
+        transform: scale(1.15);
+        transform-origin: right center;
     }
 
     .nav-links {
         display: none;
         position: fixed;
-        top: 5rem;
-        left: 50%;
-        transform: translateX(-50%);
+        top: calc(1.5rem + 60px);
+        left: 8%;
+        right: 8%;
+        transform: none;
         background: rgba(255, 255, 255, 0.95);
         backdrop-filter: blur(25px) saturate(180%);
         -webkit-backdrop-filter: blur(25px) saturate(180%);
-        padding: 1.25rem;
+        padding: 1.5rem;
         border-radius: 1rem;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08),
                     0 2px 8px rgba(0, 0, 0, 0.06);
         flex-direction: column;
-        width: 90%;
-        max-width: 400px;
-        gap: 0.75rem;
+        width: auto;
+        gap: 1rem;
         z-index: 999;
         opacity: 0;
-        visibility: hidden;
-        transform: translateX(-50%) translateY(-10px);
-        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+        transform: translateY(-10px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        pointer-events: none;
     }
 
     .nav-links.show {
         display: flex;
         opacity: 1;
-        visibility: visible;
-        transform: translateX(-50%) translateY(0);
+        transform: translateY(0);
+        pointer-events: all;
     }
 
     .nav-links a {
         width: 100%;
         text-align: center;
-        padding: 0.8rem;
-        font-size: 1rem;
+        padding: 1.1rem;
+        font-size: 1.25rem;
+        font-weight: 500;
     }
 
     .nav-links .demo-btn {
         width: 100%;
         margin-left: 0;
-        margin-top: 0.25rem;
-        padding: 0.9rem;
-        font-size: 1rem;
-    }
-
-    .logo img {
-        height: 24px;
+        margin-top: 0.5rem;
+        padding: 1.2rem;
+        font-size: 1.25rem;
+        font-weight: 500;
     }
 }
 
 @media (max-width: 480px) {
     .navbar {
-        width: calc(100% - 2rem);
-        top: 1rem;
-        padding: 0.5rem;
-        padding-left: 1rem;
-        padding-right: 0.5rem;
+        top: 1rem; /* Only change the top position for mobile */
     }
 
     .nav-links {
-        width: calc(100% - 2rem);
-        top: 4.5rem;
+        top: calc(1rem + 60px); /* Adjust dropdown position to match new navbar position */
     }
 
     .mobile-menu-btn svg {
         width: 22px;
         height: 22px;
+    }
+
+    .hero-content {
+        padding-top: 6rem;
+        min-height: 85vh;
+    }
+
+    .hero .demo-btn {
+        margin-bottom: 5%;
     }
 }
 
@@ -364,11 +376,13 @@ body {
     position: relative;
     z-index: 2;
     text-align: left;
-    width: 85%;
-    padding-top: 80px;
+    width: 100%;
+    max-width: 1400px;
+    padding-top: 6rem;
     display: flex;
     flex-direction: column;
     min-height: 85vh;
+    margin: 0 auto;
 }
 
 /* Animation keyframes */
@@ -401,12 +415,12 @@ body {
 .hero h1 {
     font-family: 'Redaction', serif;
     font-size: 4.5rem;
-    margin-bottom: 2.2rem;
+    max-width: 20ch;
+    margin-bottom: 0.5em;
     line-height: 1;
     font-weight: bold;
     color: var(--text-color);
     letter-spacing: -0.02em;
-    max-width: 20ch;
     opacity: 0;
     animation: fadeSlideUp 1s ease-out forwards;
 }
@@ -414,10 +428,10 @@ body {
 .hero p {
     font-family: 'ITC Avant Garde Pro', sans-serif;
     font-size: 1.933rem;
-    margin-bottom: 0;
+    max-width: 41ch;
+    margin: 0.5em 0;
     color: var(--text-color);
     line-height: 1.3;
-    max-width: 41ch;
     opacity: 0;
     animation: fadeSlideUp 1s ease-out forwards;
     animation-delay: 0.3s;
@@ -462,7 +476,7 @@ body {
 
 /* Challenges Section */
 .challenges {
-    padding: 8% 8%;
+    padding: 0% 8%;
     opacity: 0;
     transform: translateY(30px);
 }
@@ -507,7 +521,7 @@ body {
 .challenge-content {
     padding-top: 0;
     align-self: center;
-    max-width: 80ch;
+    max-width: 65ch;
 }
 
 .challenge h3 {
@@ -558,7 +572,7 @@ body {
     margin-bottom: 2rem;
     font-weight: bold;
     text-align: left;
-    max-width: calc(100% / 1.4);
+    max-width: calc(100% / 1.6);
     opacity: 0;
     transform: translateY(60px);
     animation: fadeSlideUp 1.2s ease-out forwards;
@@ -575,7 +589,7 @@ body {
     margin-bottom: 1.5rem;
     text-align: left;
     line-height: 1.3;
-    max-width: calc(100% / 1.4);
+    max-width: calc(100% / 1.6);
     opacity: 0;
     transform: translateY(60px);
     animation: fadeSlideUp 1.2s ease-out forwards;
@@ -610,7 +624,7 @@ body {
     font-size: 400%;
     margin-bottom: 2rem;
     font-weight: bold;
-    max-width: calc(100% / 1.4);
+    max-width: calc(100% / 1.6);
     opacity: 0;
     transform: translateY(60px);
     animation: fadeSlideUp 1.2s ease-out forwards;
@@ -627,7 +641,7 @@ body {
     margin-bottom: 1.5rem;
     text-align: left;
     line-height: 1.3;
-    max-width: calc(100% / 1.4);
+    max-width: calc(100% / 1.6);
     opacity: 0;
     transform: translateY(60px);
     animation: fadeSlideUp 1.2s ease-out forwards;
@@ -947,7 +961,7 @@ body {
 .feature-content {
     padding-top: 0;
     align-self: center;
-    max-width: 80ch;
+    max-width: 65ch;
 }
 
 .feature h3 {
@@ -1032,7 +1046,7 @@ body {
 }
 
 .faq-container {
-    max-width: 800px;
+    max-width: 65ch;
     margin: 0 auto;
 }
 
@@ -1126,295 +1140,190 @@ footer a:hover {
 
 /* Responsive adjustments */
 @media (max-width: 1400px) {
-    .hero h1 {
-        font-size: 5rem;
+    .hero h1 { 
+        font-size: clamp(3.5rem, 6vw, 4.5rem);
     }
-    
-    .hero p {
-        font-size: 2.235rem;
+    .hero p { 
+        font-size: clamp(1.5rem, 2.5vw, 1.933rem);
+    }
+}
+
+@media (max-width: 1200px) {
+    :root {
+        --grid-size: 3.75rem;
+    }
+    .challenges h2,
+    .features h2 {
+        font-size: clamp(4rem, 6.5vw, 4.8rem);
+        margin-bottom: 4.5rem;
+    }
+    .challenge h3,
+    .feature h3 {
+        font-size: clamp(3.2rem, 5.5vw, 3.8rem);
+    }
+    .hero-content {
+        max-width: 1100px;
     }
 }
 
 @media (max-width: 1024px) {
+    html { font-size: 15px; }
     :root {
         --grid-size: 3.5rem;
     }
-
-    body {
-        background-image: 
-            radial-gradient(var(--grid-color) 1.1px, transparent 1.1px),
-            radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
-                var(--grid-color-hover) 1.1px,
-                transparent 1.1px);
+    /* Hero section */
+    .hero h1 { 
+        font-size: clamp(2.75rem, 7vw, 3.85rem);
+        margin-bottom: 0.4em;
     }
-
-    .hero {
-        flex-direction: column;
-        padding: 2rem 5%;
-        gap: 3rem;
-        overflow: hidden;
-    }
-
-    .hero-content {
-        width: 100%;
-        padding-top: 0;
-        transform: translateY(0);
-    }
-
-    .gallery {
-        position: relative;
-        width: 100%;
-        height: 60vh;
-        transform: none;
-        top: 0;
-        background-position: center;
-        opacity: 0;
-        animation: fadeSlideUp 1s ease-out forwards;
-        animation-delay: 0.8s;
-    }
-
-    .hero h1 {
-        font-size: 3.85rem;
+    .hero p { 
+        font-size: clamp(1.25rem, 3vw, 1.964rem);
+        line-height: 1.4;
+        margin: 0.4em 0;
     }
     
-    .hero p {
-        font-size: 1.964rem;
-    }
-    
-    .demo-btn {
-        padding: 0.9rem 1.5rem 0.7rem 1.5rem;
-        font-size: 1rem;
-    }
-
-    .hero-text {
-        transform: translateY(10%);
-    }
-
-    .hero .demo-btn {
-        margin-bottom: 7%;
-        padding: 0.9rem 1.5rem 0.7rem 1.5rem;
-        font-size: 1rem;
-    }
-
-    .challenges {
-        padding: 6rem 5% 6rem 5%;
-    }
-
-    .challenges h2 {
-        font-size: 3.5rem;
-        margin-bottom: 4rem;
-    }
-
-    .challenge {
-        grid-template-columns: 10rem minmax(0, 1fr);
-        gap: 1.5rem;
-    }
-
-    .challenge h3 {
-        font-size: 2.75rem;
-        margin-bottom: 1.25rem;
-    }
-
-    .challenge p {
-        font-size: 1.35rem;
-    }
-
-    .features {
-        padding: 6rem 5% 6rem 5%;
-    }
-
+    /* Challenges/Features */
+    .challenges h2,
     .features h2 {
-        font-size: 3.5rem;
-        margin-bottom: 4rem;
+        font-size: clamp(4rem, 6.5vw, 4.8rem);
+        margin-bottom: 3.5rem;
     }
-
-    .feature {
-        grid-template-columns: 10rem minmax(0, 1fr);
-        gap: 1.5rem;
-    }
-
-    .feature-number {
-        font-size: 11rem;
-    }
-
+    .challenge h3,
     .feature h3 {
-        font-size: 2.75rem;
-        margin-bottom: 1.25rem;
+        font-size: clamp(3.2rem, 5.5vw, 3.8rem);
     }
-
+    .challenge p,
     .feature p {
-        font-size: 1.35rem;
+        font-size: clamp(1.8rem, 2.5vw, 2rem);
     }
-
-    .number {
-        font-size: 11rem;
+    
+    /* Mission/User sections */
+    .mission h2,
+    .user h2 {
+        font-size: clamp(2.5rem, 7vw, 3.5rem);
     }
-
-    .faq {
-        padding: 6rem 5% 6rem 5%;
+    .mission p,
+    .user p {
+        font-size: clamp(1.25rem, 3vw, 1.75rem);
     }
-
-    .faq h2 {
-        font-size: 3.75rem;
-        margin-bottom: 4rem;
-        max-width: 90%;
+    
+    /* Quotes */
+    .quote-item p {
+        font-size: clamp(1rem, 2vw, 1.35rem);
     }
-
+    .hero-content {
+        max-width: 900px;
+    }
+    .challenge-content,
+    .feature-content,
     .faq-container {
-        max-width: 90%;
-    }
-
-    .faq-item {
-        margin-bottom: 2rem;
-    }
-
-    .faq-question {
-        font-size: 2.25rem;
-        margin-bottom: 0.875rem;
-    }
-
-    .faq-answer {
-        font-size: 1.125rem;
+        max-width: 55ch;
     }
 }
 
 @media (max-width: 768px) {
+    html { font-size: 14px; }
     :root {
         --grid-size: 3rem;
     }
-
-    body {
-        background-image: 
-            radial-gradient(var(--grid-color) 1px, transparent 1px),
-            radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
-                var(--grid-color-hover) 1px,
-                transparent 1px);
+    /* Hero section */
+    .hero h1 { 
+        font-size: clamp(2.25rem, 7.5vw, 2.75rem);
+        line-height: 1.1;
+        margin-bottom: 0.35em;
     }
-
-    .nav-links {
-        display: none;
-    }
-    
-    .hero h1 {
-        font-size: 2.5rem;
+    .hero p { 
+        font-size: clamp(1.1rem, 3.2vw, 1.4rem);
+        line-height: 1.35;
+        margin: 0.35em 0;
     }
     
-    .challenge, .feature {
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    h2 {
-        font-size: 2.5rem !important;
-    }
-
-    .number {
-        font-size: 8rem;
-    }
-
-    .hero {
-        height: 50vh;
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(3, 1fr);
-    }
-
-    .gallery-item:nth-child(1),
-    .gallery-item:nth-child(2),
-    .gallery-item:nth-child(3) {
-        grid-column: 1;
-        grid-row: auto;
-    }
-
-    .gallery {
-        aspect-ratio: 1/1;
-        gap: 0.75rem;
-    }
-
-    .hero-text {
-        transform: translateY(5%);
-    }
-
-    .hero .demo-btn {
-        margin-bottom: 8%;
-        padding: 0.8rem 1.25rem 0.6rem 1.25rem;
-        font-size: 0.95rem;
-    }
-
-    .hero p {
-        font-size: 1.693rem;
-    }
-
-    .challenges {
-        padding: 4rem 5% 4rem 5%;
-    }
-
-    .challenges h2 {
-        font-size: 2.75rem;
-        margin-bottom: 3rem;
-    }
-
-    .challenge {
-        grid-template-columns: 7rem minmax(0, 1fr);
-        gap: 1rem;
-    }
-
-    .challenge h3 {
-        font-size: 2.25rem;
-        margin-bottom: 1rem;
-    }
-
-    .challenge p {
-        font-size: 1.25rem;
-    }
-
+    /* Number scaling */
+    .number,
     .feature-number {
-        font-size: 8rem;
+        font-size: clamp(9rem, 16vw, 11rem);
     }
-
-    .faq {
-        padding: 4rem 5% 4rem 5%;
+    
+    /* FAQ */
+    .faq-question {
+        font-size: clamp(2.2rem, 4.5vw, 2.6rem);
+        padding-right: 2rem;
     }
-
-    .faq h2 {
-        font-size: 3rem;
-        margin-bottom: 3rem;
+    .faq-answer {
+        font-size: clamp(1.6rem, 3vw, 1.8rem);
+    }
+    .hero-content {
         max-width: 100%;
+        padding: 6rem 1rem 0 1rem;
     }
-
+    .challenge-content,
+    .feature-content,
     .faq-container {
         max-width: 100%;
+        padding: 0 1rem;
     }
-
-    .faq-item {
-        margin-bottom: 1.75rem;
-    }
-
-    .faq-question {
-        font-size: 1.75rem;
-        margin-bottom: 0.75rem;
-        padding-right: 2.5rem;
-    }
-
-    .faq-question::after {
-        font-size: 2rem;
-    }
-
-    .faq-answer {
-        font-size: 1rem;
+    .mission h2,
+    .user h2,
+    .mission p,
+    .user p {
+        max-width: 100%;
+        padding: 0 1rem;
     }
 }
 
 @media (max-width: 480px) {
+    html { font-size: 13px; }
     :root {
-        --grid-size: 2rem;
+        --grid-size: 2.5rem;
     }
-
-    body {
-        background-image: 
-            radial-gradient(var(--grid-color) 0.75px, transparent 0.75px),
-            radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
-                var(--grid-color-hover) 0.75px,
-                transparent 0.75px);
+    /* Hero section */
+    .hero h1 { 
+        font-size: clamp(1.75rem, 8vw, 2.25rem);
+        margin-bottom: 0.3em;
+    }
+    .hero p { 
+        font-size: clamp(1rem, 3.5vw, 1.2rem);
+        line-height: 1.3;
+        margin: 0.3em 0;
+    }
+    
+    /* Universal headings */
+    h2 {
+        font-size: clamp(3rem, 6.5vw, 4rem) !important;
+        margin-bottom: 2.5rem !important;
+    }
+    
+    /* Challenges/Features */
+    .challenge h3,
+    .feature h3 {
+        font-size: clamp(2.4rem, 6vw, 3rem);
+        margin-bottom: 1rem;
+    }
+    .challenge p,
+    .feature p {
+        font-size: clamp(1.7rem, 3vw, 1.8rem);
+    }
+    
+    /* Footer */
+    footer {
+        font-size: clamp(1.1rem, 3vw, 1.4rem);
+    }
+    .hero-content {
+        max-width: 100%;
+        padding: 6rem 1rem 0 1rem;
+    }
+    .challenge-content,
+    .feature-content,
+    .faq-container {
+        max-width: 100%;
+        padding: 0 1rem;
+    }
+    .mission h2,
+    .user h2,
+    .mission p,
+    .user p {
+        max-width: 100%;
+        padding: 0 1rem;
     }
 }
 
@@ -1467,6 +1376,12 @@ html {
     z-index: 1000;
 }
 
+.scroll-to-top svg {
+    width: 1.75rem;
+    height: 1.75rem;
+    transition: all 0.3s ease;
+}
+
 .scroll-to-top:hover {
     background-color: var(--text-color);
     color: var(--bg-color);
@@ -1481,12 +1396,45 @@ html {
 }
 
 /* Add responsive styles for the scroll-to-top button */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .scroll-to-top {
         width: 4rem;
         height: 4rem;
+        bottom: 2.25rem;
+        right: 2.25rem;
+    }
+
+    .scroll-to-top svg {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .scroll-to-top {
+        width: 3.5rem;
+        height: 3.5rem;
         bottom: 2rem;
         right: 2rem;
+    }
+
+    .scroll-to-top svg {
+        width: 1.25rem;
+        height: 1.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .scroll-to-top {
+        width: 3rem;
+        height: 3rem;
+        bottom: 1.75rem;
+        right: 1.75rem;
+    }
+
+    .scroll-to-top svg {
+        width: 1.125rem;
+        height: 1.125rem;
     }
 }
 
@@ -1500,5 +1448,296 @@ html {
     100% {
         opacity: 1;
         transform: translateY(0);
+    }
+} 
+
+/* Update root font-size for better rem scaling */
+html {
+    font-size: 16px;
+    scroll-padding-top: 120px;
+}
+
+@media (max-width: 1400px) {
+    html { font-size: 15px; }
+    .hero h1 { font-size: clamp(5rem, 8vw, 7rem); }
+    .hero p { font-size: clamp(2.2rem, 3.5vw, 2.8rem); }
+}
+
+@media (max-width: 1200px) {
+    :root {
+        --grid-size: 3.75rem;
+    }
+    .challenges h2,
+    .features h2 {
+        font-size: clamp(4rem, 6.5vw, 4.8rem);
+        margin-bottom: 4.5rem;
+    }
+    .challenge h3,
+    .feature h3 {
+        font-size: clamp(3.2rem, 5.5vw, 3.8rem);
+    }
+}
+
+@media (max-width: 1024px) {
+    html { font-size: 15px; }
+    :root {
+        --grid-size: 3.5rem;
+    }
+    /* Hero section */
+    .hero h1 { 
+        font-size: clamp(4.5rem, 7.5vw, 5.5rem); 
+        margin-bottom: 0.4em;
+    }
+    .hero p { 
+        font-size: clamp(2rem, 3.5vw, 2.4rem); 
+        line-height: 1.4;
+        margin: 0.4em 0;
+    }
+    
+    /* Challenges/Features */
+    .challenges h2,
+    .features h2 {
+        font-size: clamp(4rem, 6.5vw, 4.8rem);
+        margin-bottom: 3.5rem;
+    }
+    .challenge h3,
+    .feature h3 {
+        font-size: clamp(3.2rem, 5.5vw, 3.8rem);
+    }
+    .challenge p,
+    .feature p {
+        font-size: clamp(1.8rem, 2.5vw, 2rem);
+    }
+    
+    /* Mission/User sections */
+    .mission h2,
+    .user h2 {
+        font-size: clamp(2.5rem, 7vw, 3.5rem);
+    }
+    .mission p,
+    .user p {
+        font-size: clamp(1.25rem, 3vw, 1.75rem);
+    }
+    
+    /* Quotes */
+    .quote-item p {
+        font-size: clamp(1rem, 2vw, 1.35rem);
+    }
+}
+
+@media (max-width: 768px) {
+    html { font-size: 14px; }
+    :root {
+        --grid-size: 3rem;
+    }
+    /* Hero section */
+    .hero h1 { 
+        font-size: clamp(3.8rem, 8vw, 4.5rem);
+        line-height: 1.1;
+        margin-bottom: 0.35em;
+    }
+    .hero p { 
+        font-size: clamp(1.8rem, 3.5vw, 2rem); 
+        line-height: 1.35;
+        margin: 0.35em 0;
+    }
+    
+    /* Number scaling */
+    .number,
+    .feature-number {
+        font-size: clamp(9rem, 16vw, 11rem);
+    }
+    
+    /* FAQ */
+    .faq-question {
+        font-size: clamp(2.2rem, 4.5vw, 2.6rem);
+        padding-right: 2rem;
+    }
+    .faq-answer {
+        font-size: clamp(1.6rem, 3vw, 1.8rem);
+    }
+}
+
+@media (max-width: 480px) {
+    html { font-size: 13px; }
+    :root {
+        --grid-size: 2.5rem;
+    }
+    /* Hero section */
+    .hero h1 { 
+        font-size: clamp(3.2rem, 8.5vw, 3.8rem);
+        margin-bottom: 0.3em;
+    }
+    .hero p { 
+        font-size: clamp(1.7rem, 4vw, 1.9rem); 
+        line-height: 1.3;
+        margin: 0.3em 0;
+    }
+    
+    /* Universal headings */
+    h2 {
+        font-size: clamp(3rem, 6.5vw, 4rem) !important;
+        margin-bottom: 2.5rem !important;
+    }
+    
+    /* Challenges/Features */
+    .challenge h3,
+    .feature h3 {
+        font-size: clamp(2.4rem, 6vw, 3rem);
+        margin-bottom: 1rem;
+    }
+    .challenge p,
+    .feature p {
+        font-size: clamp(1.7rem, 3vw, 1.8rem);
+    }
+    
+    /* Footer */
+    footer {
+        font-size: clamp(1.1rem, 3vw, 1.4rem);
+    }
+}
+
+/* Add tablet styles */
+@media (max-width: 1024px) {
+    .user::before {
+        display: none; /* Hide the image on tablet and smaller screens */
+    }
+}
+
+/* Remove these since we're hiding the image completely */
+@media (max-width: 768px) {
+    .user::before {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .user::before {
+        display: none;
+    }
+}
+
+/* Carousel base styles */
+.carousel-item {
+    flex: 0 0 300px;
+    height: 400px;
+    border-radius: 25px;
+}
+
+/* Responsive carousel adjustments */
+@media (max-width: 1400px) {
+    .carousel-item {
+        flex: 0 0 280px; /* Slightly smaller */
+        height: 380px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .carousel-item {
+        flex: 0 0 260px;
+        height: 350px;
+    }
+    
+    .carousel-track {
+        gap: 8px; /* Reduce gap slightly */
+    }
+}
+
+@media (max-width: 768px) {
+    .carousel-item {
+        flex: 0 0 240px;
+        height: 320px;
+    }
+    
+    .carousel-track {
+        gap: 6px;
+    }
+    
+    /* Adjust gradient overlays */
+    .image-carousel::before,
+    .image-carousel::after {
+        width: 12%; /* Smaller gradient area */
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-item {
+        flex: 0 0 220px;
+        height: 300px;
+    }
+    
+    .carousel-track {
+        gap: 5px;
+    }
+    
+    /* Adjust gradient overlays */
+    .image-carousel::before,
+    .image-carousel::after {
+        width: 10%;
+    }
+}
+
+/* Update animation width calculation for each breakpoint */
+@media (max-width: 1400px) {
+    .carousel-track {
+        width: calc((280px * 20) + (8px * 19));
+    }
+}
+
+@media (max-width: 1024px) {
+    .carousel-track {
+        width: calc((260px * 20) + (8px * 19));
+    }
+}
+
+@media (max-width: 768px) {
+    .carousel-track {
+        width: calc((240px * 20) + (6px * 19));
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-track {
+        width: calc((220px * 20) + (5px * 19));
+    }
+}
+
+/* Update quote item base styles */
+.quote-item {
+    flex: 0 0 450px; /* Original desktop width */
+    padding: 2.5rem;
+}
+
+/* Add responsive adjustments */
+@media (max-width: 1024px) {
+    .quote-item {
+        flex: 0 0 380px; /* Reduced width for tablet */
+        padding: 2rem;
+    }
+    
+    .quotes-track {
+        width: calc((380px * 20) + (10px * 19)); /* Update track width */
+    }
+}
+
+@media (max-width: 768px) {
+    .quote-item {
+        flex: 0 0 320px; /* Smaller width for small tablets */
+        padding: 1.75rem;
+    }
+    
+    .quotes-track {
+        width: calc((320px * 20) + (10px * 19));
+    }
+}
+
+@media (max-width: 480px) {
+    .quote-item {
+        flex: 0 0 280px; /* Smallest width for mobile */
+        padding: 1.5rem;
+    }
+    
+    .quotes-track {
+        width: calc((280px * 20) + (10px * 19));
     }
 } 
