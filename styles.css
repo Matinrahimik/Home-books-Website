@@ -52,8 +52,8 @@
     --text-color: #361813;
     --bg-color: #FEFAF0;
     --grid-size: 4rem;
-    --grid-color: rgba(54, 24, 19, 0.075);
-    --grid-color-hover: rgba(54, 24, 19, 0.15);
+    --grid-color: rgba(54, 24, 19, 0.0375);
+    --grid-color-hover: rgba(54, 24, 19, 0.075);
 }
 
 body {
