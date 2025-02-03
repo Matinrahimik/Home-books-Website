@@ -724,16 +724,19 @@ body {
 
 /* FAQ Section */
 .faq {
-    padding: 8rem 5% 4rem 5%;
-    background-color: var(--bg-color);
+    padding: 0rem 8% 8rem 8%;
+    max-width: none;
+    margin: 0;
 }
 
 .faq h2 {
     font-family: 'Redaction', serif;
-    font-size: 3rem;
-    margin-bottom: 3rem;
+    font-size: 4.5rem;
+    margin-bottom: 5rem;
     font-weight: bold;
-    text-align: center;
+    max-width: calc(100% / 1.4);
+    margin-left: 0;
+    margin-right: 0;
 }
 
 .faq-container {
@@ -742,22 +745,64 @@ body {
 }
 
 .faq-item {
-    border-bottom: 1px solid #eee;
-    padding: 1rem 0;
+    margin-bottom: 2.5rem;
+}
+
+.faq-content {
+    max-width: none;
 }
 
 .faq-question {
     font-family: 'Redaction', serif;
-    font-weight: bold;
-    font-size: 1.25rem;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: normal;
+    line-height: 1.2;
     cursor: pointer;
-    padding: 1rem 0;
     color: var(--text-color);
+    transition: opacity 0.3s ease;
+    position: relative;
+    padding-right: 3rem;
+}
+
+.faq-question:hover {
+    opacity: 0.8;
+}
+
+.faq-question::after {
+    content: '+';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2.5rem;
+    transition: transform 0.3s ease;
+}
+
+.faq-question.active::after {
+    transform: translateY(-50%) rotate(45deg);
 }
 
 .faq-answer {
+    font-family: 'ITC Avant Garde Pro', sans-serif;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    color: var(--text-color);
     display: none;
-    padding: 1rem 0;
+    padding-bottom: 1rem;
+    animation: fadeIn 0.5s ease forwards;
+    max-width: 65ch;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Footer */
@@ -880,6 +925,33 @@ footer {
     .number {
         font-size: 11rem;
     }
+
+    .faq {
+        padding: 6rem 5% 6rem 5%;
+    }
+
+    .faq h2 {
+        font-size: 3.75rem;
+        margin-bottom: 4rem;
+        max-width: 90%;
+    }
+
+    .faq-container {
+        max-width: 90%;
+    }
+
+    .faq-item {
+        margin-bottom: 2rem;
+    }
+
+    .faq-question {
+        font-size: 2.25rem;
+        margin-bottom: 0.875rem;
+    }
+
+    .faq-answer {
+        font-size: 1.125rem;
+    }
 }
 
 @media (max-width: 768px) {
@@ -960,6 +1032,38 @@ footer {
 
     .feature-number {
         font-size: 8rem;
+    }
+
+    .faq {
+        padding: 4rem 5% 4rem 5%;
+    }
+
+    .faq h2 {
+        font-size: 3rem;
+        margin-bottom: 3rem;
+        max-width: 100%;
+    }
+
+    .faq-container {
+        max-width: 100%;
+    }
+
+    .faq-item {
+        margin-bottom: 1.75rem;
+    }
+
+    .faq-question {
+        font-size: 1.75rem;
+        margin-bottom: 0.75rem;
+        padding-right: 2.5rem;
+    }
+
+    .faq-question::after {
+        font-size: 2rem;
+    }
+
+    .faq-answer {
+        font-size: 1rem;
     }
 }
 

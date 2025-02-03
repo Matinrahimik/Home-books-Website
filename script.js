@@ -1,19 +1,3 @@
-// FAQ Toggle functionality
-document.querySelectorAll('.faq-question').forEach(question => {
-    question.addEventListener('click', () => {
-        const answer = question.nextElementSibling;
-        const isOpen = answer.style.display === 'block';
-        
-        // Close all other answers
-        document.querySelectorAll('.faq-answer').forEach(a => {
-            a.style.display = 'none';
-        });
-        
-        // Toggle current answer
-        answer.style.display = isOpen ? 'none' : 'block';
-    });
-});
-
 // Smooth scroll for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -90,4 +74,29 @@ document.addEventListener('DOMContentLoaded', () => {
     if (userSection) {
         observer.observe(userSection);
     }
+});
+
+// FAQ Toggle functionality
+document.querySelectorAll('.faq-question').forEach(question => {
+    question.addEventListener('click', () => {
+        const answer = question.nextElementSibling;
+        const isOpen = question.classList.contains('active');
+        
+        // Close all other answers
+        document.querySelectorAll('.faq-question').forEach(q => {
+            if (q !== question) {
+                q.classList.remove('active');
+                q.nextElementSibling.style.display = 'none';
+            }
+        });
+        
+        // Toggle current answer
+        if (isOpen) {
+            question.classList.remove('active');
+            answer.style.display = 'none';
+        } else {
+            question.classList.add('active');
+            answer.style.display = 'block';
+        }
+    });
 }); 
