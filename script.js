@@ -140,20 +140,20 @@ document.querySelectorAll('.faq-question').forEach(question => {
     });
 });
 
-// Scroll to Top Button Functionality
-const scrollToTopButton = document.getElementById('scrollToTop');
+// Scroll to Top Button
+const scrollToTopBtn = document.getElementById('scrollToTop');
 
-// Show button when user scrolls down 200px from the top
+// Show button when user scrolls down 100px
 window.addEventListener('scroll', () => {
-    if (window.scrollY > 200) {
-        scrollToTopButton.classList.add('visible');
+    if (window.scrollY > 100) {
+        scrollToTopBtn.classList.add('visible');
     } else {
-        scrollToTopButton.classList.remove('visible');
+        scrollToTopBtn.classList.remove('visible');
     }
 });
 
 // Smooth scroll to top when button is clicked
-scrollToTopButton.addEventListener('click', () => {
+scrollToTopBtn.addEventListener('click', () => {
     window.scrollTo({
         top: 0,
         behavior: 'smooth'
