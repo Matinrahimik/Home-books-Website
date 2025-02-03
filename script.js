@@ -1,14 +1,61 @@
-// Smooth scroll for navigation links
+// Enhanced smooth scroll function
+function smoothScrollTo(target, duration = 800) {
+    // Calculate navbar height dynamically
+    const navbar = document.querySelector('.navbar');
+    const navbarHeight = navbar ? navbar.offsetHeight : 0;
+    
+    // Different padding for different sections
+    let extraPadding = 48; // default padding
+    
+    // Less padding for mission and user sections
+    if (target.classList.contains('mission') || 
+        target.classList.contains('user')) {
+        extraPadding = 16;
+    }
+    // Keep challenges as is
+    else if (target.classList.contains('challenges')) {
+        extraPadding = 24;
+    }
+    // More padding for features and FAQ sections
+    else if (target.classList.contains('features') || 
+             target.classList.contains('faq')) {
+        extraPadding = 64;
+    }
+
+    const scrollPadding = navbarHeight + extraPadding;
+    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - scrollPadding;
+    const startPosition = window.pageYOffset;
+    const distance = targetPosition - startPosition;
+    let startTime = null;
+
+    function animation(currentTime) {
+        if (startTime === null) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        const progress = Math.min(timeElapsed / duration, 1);
+        
+        // Easing function for smooth acceleration and deceleration
+        const ease = t => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+        
+        window.scrollTo(0, startPosition + distance * ease(progress));
+        
+        if (timeElapsed < duration) {
+            requestAnimationFrame(animation);
+        }
+    }
+    
+    requestAnimationFrame(animation);
+}
+
+// Reset and update smooth scroll for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth'
-            });
+            smoothScrollTo(target);
             // Close mobile menu when clicking a link
             document.querySelector('.nav-links').classList.remove('show');
+            document.querySelector('.mobile-menu-btn')?.classList.remove('active');
         }
     });
 });
@@ -89,30 +136,42 @@ function setupCarousel(carouselClass) {
 setupCarousel('.image-carousel');
 setupCarousel('.quotes-carousel');
 
-// Create intersection observer for animation triggers
-const observer = new IntersectionObserver((entries) => {
+// Enhanced intersection observer for animations
+const observerOptions = {
+    threshold: 0.2,
+    rootMargin: '-50px'
+};
+
+const animationObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('animate');
+            // Optional: Remove observer after animation
+            // animationObserver.unobserve(entry.target);
+        } else {
+            // Optional: Remove animation when out of view for replay
+            entry.target.classList.remove('animate');
         }
     });
-}, {
-    threshold: 0.25,
-    rootMargin: '-50px'
-});
+}, observerOptions);
 
-// Observe mission section when document is loaded
+// Observe all animated sections
 document.addEventListener('DOMContentLoaded', () => {
-    const missionSection = document.querySelector('.mission');
-    const userSection = document.querySelector('.user');
-    
-    if (missionSection) {
-        observer.observe(missionSection);
-    }
-    
-    if (userSection) {
-        observer.observe(userSection);
-    }
+    const animatedSections = [
+        '.mission',
+        '.user',
+        '.challenges',
+        '.quotes',
+        '.features',
+        '.faq'
+    ];
+
+    animatedSections.forEach(selector => {
+        const element = document.querySelector(selector);
+        if (element) {
+            animationObserver.observe(element);
+        }
+    });
 });
 
 // FAQ Toggle functionality
@@ -140,25 +199,22 @@ document.querySelectorAll('.faq-question').forEach(question => {
     });
 });
 
-// Scroll to Top Button
+// Scroll to top with smooth animation
 const scrollToTopBtn = document.getElementById('scrollToTop');
-
-// Show button when user scrolls down 100px
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 100) {
-        scrollToTopBtn.classList.add('visible');
-    } else {
-        scrollToTopBtn.classList.remove('visible');
-    }
-});
-
-// Smooth scroll to top when button is clicked
-scrollToTopBtn.addEventListener('click', () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+if (scrollToTopBtn) {
+    // Show button when user scrolls down 100px
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+            scrollToTopBtn.classList.add('visible');
+        } else {
+            scrollToTopBtn.classList.remove('visible');
+        }
     });
-});
+
+    scrollToTopBtn.addEventListener('click', () => {
+        smoothScrollTo(document.body);
+    });
+}
 
 // Intersection Observer for challenges section animation
 const challengesSection = document.querySelector('.challenges');

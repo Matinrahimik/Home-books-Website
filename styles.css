@@ -154,16 +154,14 @@ body {
     line-height: 1;
     white-space: nowrap;
     font-family: 'ITC Avant Garde Pro', sans-serif;
-    font-weight: 500;
+    font-weight: normal;
     text-decoration: none;
     color: var(--text-color);
     position: relative;
 }
 
 .nav-links a:hover {
-    background-color: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px) brightness(1.1);
-    -webkit-backdrop-filter: blur(10px) brightness(1.1);
+    background-color: rgba(255, 255, 255, 1);
     transform: scale(1.05);
     box-shadow: 0 2px 8px rgba(42, 24, 16, 0.06);
 }
@@ -172,9 +170,8 @@ body {
     width: 100%;
     margin: 0;
     padding: 0.7rem 1.2rem 0.5rem 1.2rem;
-    background-color: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 0 4px 12px rgba(42, 24, 16, 0.08);
     font-size: 0.95rem;
     line-height: 1;
     white-space: nowrap;
@@ -192,13 +189,10 @@ body {
     color: var(--bg-color);
     transform: scale(1.05);
     box-shadow: 0 6px 16px rgba(42, 24, 16, 0.15);
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
 }
 
 .nav-links a.active {
     background-color: rgba(255, 255, 255, 1);
-    font-weight: 600;
     box-shadow: 0 2px 8px rgba(42, 24, 16, 0.06);
 }
 
@@ -341,14 +335,14 @@ body {
         left: 50%;
         transform: translateX(-50%);
         flex-direction: column;
-        background-color: rgba(255, 255, 255, 0.7) !important;
-        backdrop-filter: blur(20px) saturate(180%) brightness(1.1);
-        -webkit-backdrop-filter: blur(20px) saturate(180%) brightness(1.1);
+        background-color: rgba(255, 255, 255, 1) !important;
+        backdrop-filter: blur(25px) saturate(180%);
+        -webkit-backdrop-filter: blur(25px) saturate(180%);
         padding: 1.2rem;
         gap: 1rem;
         border-radius: 28px !important;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08),
-                    inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+                    inset 0 0 0 1px rgba(255, 255, 255, 0.4);
         width: 84%;
         min-width: min-content;
         max-width: 1200px;
@@ -369,24 +363,22 @@ body {
         text-align: center;
         padding: 1rem 1.2rem 0.8rem 1.2rem;
         border-radius: 28px !important;
-        background-color: rgba(255, 255, 255, 0.5);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
+        background-color: transparent;
         transition: all 0.3s ease;
         font-size: 1.71rem;
         line-height: 1;
         white-space: nowrap;
         font-family: 'ITC Avant Garde Pro', sans-serif;
-        font-weight: 500;
+        font-weight: normal;
         text-decoration: none;
         color: var(--text-color);
         position: relative;
     }
 
     .nav-links a:hover {
-        background-color: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px) brightness(1.1);
-        -webkit-backdrop-filter: blur(10px) brightness(1.1);
+        background-color: rgba(255, 255, 255, 1);
+        transform: scale(1.05);
+        box-shadow: 0 2px 8px rgba(42, 24, 16, 0.06);
     }
 
     .nav-links .demo-btn {
@@ -403,7 +395,7 @@ body {
         border: none;
         border-radius: 28px !important;
         cursor: pointer;
-        font-weight: 500;
+        font-weight: normal;
         transition: all 0.2s ease;
     }
 
@@ -416,7 +408,6 @@ body {
 
     .nav-links a.active {
         background-color: rgba(255, 255, 255, 1);
-        font-weight: 600;
         box-shadow: 0 2px 8px rgba(42, 24, 16, 0.06);
     }
 
@@ -690,7 +681,8 @@ body {
 
 /* Challenges Section */
 .challenges {
-    padding: 0% 8%;
+    scroll-margin-top: calc(5rem + 24px);
+    padding: 8rem 8% 8rem 8%;
     opacity: 1;
     transform: none;
 }
@@ -768,6 +760,7 @@ body {
 
 /* Mission Section */
 .mission {
+    scroll-margin-top: calc(5rem + 16px);
     padding: 8rem 8% 4rem 8%;
     max-width: none;
     margin: 0;
@@ -820,6 +813,7 @@ body {
 
 /* User Section */
 .user {
+    scroll-margin-top: calc(5rem + 16px);
     padding: 8rem 8% 5rem 8%;
     max-width: none;
     margin: 0;
@@ -1110,7 +1104,8 @@ body {
 
 /* Features Section */
 .features {
-    padding: 0rem 8% 8rem 8%;
+    scroll-margin-top: calc(5rem + 64px);
+    padding: 8rem 8% 8rem 8%;
     max-width: none;
     margin: 0;
     opacity: 0;
@@ -1202,7 +1197,8 @@ body {
 
 /* FAQ Section */
 .faq {
-    padding: 0rem 8% 8rem 8%;
+    scroll-margin-top: calc(5rem + 64px);
+    padding: 8rem 8% 8rem 8%;
     max-width: none;
     margin: 0;
     opacity: 0;
