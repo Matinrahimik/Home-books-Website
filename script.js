@@ -7,9 +7,48 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             target.scrollIntoView({
                 behavior: 'smooth'
             });
+            // Close mobile menu when clicking a link
+            document.querySelector('.nav-links').classList.remove('show');
         }
     });
 });
+
+// Mobile menu toggle
+const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+const navLinks = document.querySelector('.nav-links');
+
+if (mobileMenuBtn && navLinks) {
+    mobileMenuBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        mobileMenuBtn.classList.toggle('active');
+        navLinks.classList.toggle('show');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target) && navLinks.classList.contains('show')) {
+            navLinks.classList.remove('show');
+            mobileMenuBtn.classList.remove('active');
+        }
+    });
+
+    // Close menu when window is resized to desktop view
+    window.addEventListener('resize', () => {
+        const isPortrait = window.matchMedia('(orientation: portrait)').matches;
+        if (window.innerWidth > 1024 && !isPortrait) {
+            navLinks.classList.remove('show');
+            mobileMenuBtn.classList.remove('active');
+        }
+    });
+
+    // Close menu when clicking a link
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('show');
+            mobileMenuBtn.classList.remove('active');
+        });
+    });
+}
 
 // Auto-scroll carousels
 function setupCarousel(carouselClass) {
@@ -119,4 +158,78 @@ scrollToTopButton.addEventListener('click', () => {
         top: 0,
         behavior: 'smooth'
     });
+});
+
+// Intersection Observer for challenges section animation
+const challengesSection = document.querySelector('.challenges');
+const challengesObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('animate');
+            challengesObserver.unobserve(entry.target);
+        }
+    });
+}, {
+    threshold: 0.2
+});
+
+if (challengesSection) {
+    challengesObserver.observe(challengesSection);
+}
+
+// Intersection Observer for quotes section animation
+const quotesSection = document.querySelector('.quotes');
+const quotesObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('animate');
+            quotesObserver.unobserve(entry.target);
+        }
+    });
+}, {
+    threshold: 0.2
+});
+
+if (quotesSection) {
+    quotesObserver.observe(quotesSection);
+}
+
+// Intersection Observer for features section animation
+const featuresSection = document.querySelector('.features');
+const featuresObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('animate');
+            featuresObserver.unobserve(entry.target);
+        }
+    });
+}, {
+    threshold: 0.2
+});
+
+if (featuresSection) {
+    featuresObserver.observe(featuresSection);
+}
+
+// Intersection Observer for FAQ section animation
+const faqSection = document.querySelector('.faq');
+const faqObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('animate');
+            faqObserver.unobserve(entry.target);
+        }
+    });
+}, {
+    threshold: 0.2
+});
+
+if (faqSection) {
+    faqObserver.observe(faqSection);
+}
+
+// Add mouse tracking for dot hover effect
+document.addEventListener('mousemove', (e) => {
+    document.body.style.setProperty('--mouse-x', e.clientX + 'px');
+    document.body.style.setProperty('--mouse-y', e.clientY + 'px');
 }); 
