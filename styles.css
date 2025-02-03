@@ -277,21 +277,31 @@ body {
     }
 
     .hero {
-        padding: 0;
+        padding: 8rem 8% 8rem;
     }
-    .hero h1 { 
-        font-size: clamp(4rem, 7vw, 6rem);
-        line-height: 1;
-    }
-    .hero p { 
-        font-size: clamp(1.8rem, 3vw, 2.4rem);
-        line-height: 1.2;
-        margin: 1.5rem 0 2rem;
-    }
-    
+
     .hero-content {
-        padding: 2.5rem 10%;
-        min-height: 85vh;
+        min-height: auto;
+        padding-top: 3rem;
+    }
+
+    .hero-text {
+        transform: none;
+    }
+
+    .hero .demo-btn {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        position: relative;
+    }
+
+    .hero h1 {
+        font-size: clamp(3.5rem, 5vw, 4.5rem);
+    }
+
+    .hero p {
+        font-size: clamp(1.5rem, 2.5vw, 1.933rem);
+        margin: 1rem 0;
     }
 }
 
