@@ -487,10 +487,11 @@ body {
 
 .challenge {
     display: flex;
-    gap: 2rem;
+    gap: 5rem;
     margin-bottom: 2.5rem;
     opacity: 0;
     transform: translateY(30px);
+    align-items: flex-start;
 }
 
 .challenges.animate .challenge:nth-child(2) {
@@ -519,8 +520,9 @@ body {
 }
 
 .challenge-content {
-    padding-top: 0;
-    align-self: center;
+    padding-top: 2rem;
+    padding-left: 0;
+    align-self: flex-start;
     max-width: 65ch;
 }
 
@@ -544,9 +546,10 @@ body {
     font-size: 14rem;
     font-weight: normal;
     line-height: 1;
-    justify-self: end;
     color: var(--text-color);
     margin-top: 0;
+    min-width: 12rem;
+    text-align: right;
 }
 
 /* Mission Section */
@@ -773,7 +776,7 @@ body {
 /* Quotes Section */
 .quotes {
     padding: 0 8%;
-    margin: -4rem 0 8rem 0;
+    margin: 8rem 0 8rem 0;
     opacity: 0;
     transform: translateY(30px);
 }
@@ -943,10 +946,11 @@ body {
 
 .feature {
     display: flex;
-    gap: 2rem;
+    gap: 5rem;
     margin-bottom: 2.5rem;
     opacity: 0;
     transform: translateY(30px);
+    align-items: flex-start;
 }
 
 .feature-number {
@@ -956,11 +960,14 @@ body {
     line-height: 1;
     color: var(--text-color);
     margin-top: 0;
+    min-width: 12rem;
+    text-align: right;
 }
 
 .feature-content {
-    padding-top: 0;
-    align-self: center;
+    padding-top: 2rem;
+    padding-left: 0;
+    align-self: flex-start;
     max-width: 65ch;
 }
 
@@ -1269,6 +1276,18 @@ footer a:hover {
         max-width: 100%;
         padding: 0 1rem;
     }
+    .challenge, .feature {
+        gap: 3rem;
+        margin-bottom: 4rem;
+    }
+
+    .number, .feature-number {
+        min-width: 8rem;
+    }
+
+    .challenge-content, .feature-content {
+        padding-top: 1rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1324,6 +1343,18 @@ footer a:hover {
     .user p {
         max-width: 100%;
         padding: 0 1rem;
+    }
+    .challenge, .feature {
+        gap: 1.5rem;
+        margin-bottom: 5rem;
+    }
+
+    .number, .feature-number {
+        min-width: 5rem;
+    }
+
+    .challenge-content, .feature-content {
+        padding-top: 0.75rem;
     }
 }
 
