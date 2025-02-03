@@ -162,6 +162,7 @@ body {
     margin-left: 0;
     line-height: 1;
     box-shadow: 0 4px 12px rgba(42, 24, 16, 0.08);
+    text-decoration: none;
 }
 
 .nav-links .demo-btn:hover {
@@ -273,6 +274,8 @@ body {
     animation: fadeSlideUp 1s ease-out forwards;
     animation-delay: 2.6s;
     line-height: 1;
+    text-decoration: none;
+    display: inline-block;
 }
 
 .hero .demo-btn:hover {
@@ -777,6 +780,8 @@ h1, h2, h3, h4, h5, h6, p, .number, .faq-question {
     background-color: var(--text-color);
     color: var(--bg-color);
     font-weight: 500;
+    text-decoration: none;
+    display: inline-block;
 }
 
 /* Add smooth scroll to html */
