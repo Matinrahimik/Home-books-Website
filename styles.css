@@ -2230,9 +2230,9 @@ footer a:hover {
 /* Add mobile styles */
 @media (max-width: 768px) {
     .hero-mockup {
-        width: 45%;
-        bottom: -10%;
-        right: 8%;
+        width: 30%;
+        bottom: -20%;
+        right: 12%;
     }
 }
 
