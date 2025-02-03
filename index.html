@@ -70,7 +70,7 @@
             <a href="#pain-points">Pain points</a>
             <a href="#features">Features</a>
             <a href="#faq">F&Q</a>
-            <a href="https://calendly.com/matinrahimik/30min?month=2025-02" target="_blank" class="demo-btn">Book a demo</a>
+            <button class="demo-btn">Book a demo</button>
         </div>
     </nav>
 
@@ -81,7 +81,7 @@
                 <h1>Organize your home books in minutes, not days!</h1>
                 <p>Catalog hundreds of books in minutes with AI, organize your notes, and discover new reads —all in one app!</p>
             </div>
-            <a href="https://calendly.com/matinrahimik/30min?month=2025-02" target="_blank" class="demo-btn">Book a demo</a>
+            <button class="demo-btn">Book a demo</button>
         </div>
         <div class="gallery"></div>
     </section>
@@ -240,8 +240,13 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             const missionSection = document.querySelector('.mission');
+            const userSection = document.querySelector('.user');
+            
             if (missionSection) {
                 observer.observe(missionSection);
+            }
+            if (userSection) {
+                observer.observe(userSection);
             }
 
             // Add active state handling
