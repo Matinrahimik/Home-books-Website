@@ -81,7 +81,13 @@ const observer = new IntersectionObserver((entries) => {
 // Observe mission section when document is loaded
 document.addEventListener('DOMContentLoaded', () => {
     const missionSection = document.querySelector('.mission');
+    const userSection = document.querySelector('.user');
+    
     if (missionSection) {
         observer.observe(missionSection);
+    }
+    
+    if (userSection) {
+        observer.observe(userSection);
     }
 }); 

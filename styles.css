@@ -83,12 +83,12 @@ body {
     align-items: center;
     padding: 0.75rem;
     padding-left: 1.5rem;
-    background-color: rgba(255, 255, 255, 0.75);
+    background-color: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(25px) saturate(180%);
     -webkit-backdrop-filter: blur(25px) saturate(180%);
     z-index: 1000;
     border-radius: 100px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08),
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05),
                 inset 0 0 0 1px rgba(255, 255, 255, 0.4);
     width: 57%;
     opacity: 0;
@@ -258,11 +258,11 @@ body {
     font-family: 'ITC Avant Garde Pro', sans-serif;
     background-color: var(--text-color);
     color: var(--bg-color);
-    padding: 1.3rem 2.2rem 1rem 2.2rem;
+    padding: 1rem 1.75rem 0.8rem 1.75rem;
     border: 1.5px solid var(--text-color);
     border-radius: 28px;
     cursor: pointer;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     transition: all 0.3s ease;
     font-weight: 500;
     margin-top: auto;
@@ -323,10 +323,10 @@ body {
 .mission h2 {
     font-family: 'Redaction', serif;
     font-size: 400%;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     font-weight: bold;
     text-align: left;
-    max-width: calc(100% / 1.4);
+    max-width: calc(100% / 1.2);
     opacity: 0;
     transform: translateY(60px);
     animation: fadeSlideUp 1.2s ease-out forwards;
@@ -339,11 +339,11 @@ body {
 }
 
 .mission p {
-    font-size: 244%;
+    font-size: 200%;
     margin-bottom: 1.5rem;
     text-align: left;
     line-height: 1.3;
-    max-width: calc(100% / 1.4);
+    max-width: calc(100% / 1.8);
     opacity: 0;
     transform: translateY(60px);
     animation: fadeSlideUp 1.2s ease-out forwards;
@@ -361,22 +361,48 @@ body {
     max-width: none;
     margin: 0;
     background-color: var(--bg-color);
+    opacity: 0;
+    transform: translateY(60px);
+    animation: fadeSlideUp 1.2s ease-out forwards;
+    animation-play-state: paused;
+}
+
+.user.animate {
+    animation-play-state: running;
 }
 
 .user h2 {
     font-family: 'Redaction', serif;
     font-size: 400%;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     font-weight: bold;
-    max-width: calc(100% / 1.4);
+    max-width: calc(100% / 1.2);
+    opacity: 0;
+    transform: translateY(60px);
+    animation: fadeSlideUp 1.2s ease-out forwards;
+    animation-delay: 0.2s;
+    animation-play-state: paused;
+}
+
+.user.animate h2 {
+    animation-play-state: running;
 }
 
 .user p {
-    font-size: 244%;
+    font-size: 200%;
     margin-bottom: 1.5rem;
     text-align: left;
     line-height: 1.3;
-    max-width: calc(100% / 1.4);
+    max-width: calc(100% / 1.8);
+    opacity: 0;
+    transform: translateY(60px);
+    animation: fadeSlideUp 1.2s ease-out forwards;
+    animation-delay: 0.4s;
+    animation-play-state: paused;
+}
+
+.user.animate p {
+    animation-play-state: running;
 }
 
 @keyframes scroll {
@@ -399,6 +425,14 @@ body {
     user-select: none;
     -webkit-user-select: none;
     pointer-events: none;
+    opacity: 0;
+    animation: fadeSlideUp 1.2s ease-out forwards;
+    animation-delay: 0.6s;
+    animation-play-state: paused;
+}
+
+.user.animate .image-carousel {
+    animation-play-state: running;
 }
 
 /* Add left gradient overlay */
@@ -660,8 +694,8 @@ footer {
     }
     
     .demo-btn {
-        padding: 1rem 2rem;
-        font-size: 1.1rem;
+        padding: 0.9rem 1.5rem 0.7rem 1.5rem;
+        font-size: 1rem;
     }
 
     .hero-text {
@@ -719,8 +753,8 @@ footer {
     }
 
     .hero .demo-btn {
-        margin-bottom: 3%;
-        margin-left: 3%;
+        padding: 0.8rem 1.25rem 0.6rem 1.25rem;
+        font-size: 0.95rem;
     }
 
     .hero p {
