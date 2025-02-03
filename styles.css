@@ -304,6 +304,65 @@ body {
     display: none;
 }
 
+/* Challenges Section */
+.challenges {
+    padding: 0rem 8% 8rem 8%;
+    max-width: none;
+    margin: 0;
+}
+
+.challenges h2 {
+    font-family: 'Redaction', serif;
+    font-size: 4rem;
+    margin-bottom: 6rem;
+    font-weight: bold;
+    max-width: calc(100% / 1.4);
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.challenge {
+    display: grid;
+    grid-template-columns: 12rem minmax(0, 1fr);
+    gap: 2rem;
+    margin-bottom: 5rem;
+    align-items: center;
+    max-width: calc(100% / 1.4);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.challenge-content {
+    padding-top: 0;
+    align-self: center;
+    max-width: 80ch;
+}
+
+.challenge h3 {
+    font-family: 'Redaction', serif;
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: normal;
+    line-height: 1.1;
+}
+
+.challenge p {
+    font-family: 'ITC Avant Garde Pro', sans-serif;
+    font-size: 1.5rem;
+    line-height: 1.4;
+    color: var(--text-color);
+}
+
+.number {
+    font-family: 'Redaction', serif;
+    font-size: 14rem;
+    font-weight: normal;
+    line-height: 1;
+    justify-self: end;
+    color: var(--text-color);
+    margin-top: 0;
+}
+
 /* Mission Section */
 .mission {
     padding: 8rem 8% 4rem 8%;
@@ -506,93 +565,161 @@ body {
     display: none;
 }
 
-/* Pain Points Section */
-.pain-points {
-    padding: 8rem 5% 4rem 5%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.pain-points h2 {
-    font-family: 'Redaction', serif;
-    font-size: 3rem;
-    margin-bottom: 3rem;
-    font-weight: bold;
-}
-
-.pain-point {
-    display: flex;
-    gap: 2rem;
-    margin-bottom: 3rem;
-}
-
-.number {
-    font-family: 'Redaction', serif;
-    font-size: 3.5rem;
-    font-weight: bold;
-    line-height: 1;
-}
-
-.pain-point h3 {
-    font-family: 'Redaction', serif;
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    font-weight: bold;
-}
-
 /* Quotes Section */
 .quotes {
-    padding: 4rem 5%;
-    background-color: var(--bg-color);
+    padding: 0 8%;
+    margin: -4rem 0 8rem 0;
 }
 
 .quotes h2 {
     font-family: 'Redaction', serif;
-    font-size: 3rem;
-    margin-bottom: 2rem;
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    line-height: 1;
     font-weight: bold;
-    text-align: center;
+    color: var(--text-color);
+    letter-spacing: -0.02em;
 }
 
 .quotes-carousel {
     display: flex;
-    gap: 2rem;
-    overflow-x: auto;
-    padding: 2rem 0;
+    padding: 1rem 0;
+    width: 100vw;
+    margin-left: calc(-8vw);
+    overflow: hidden;
+    position: relative;
+    background: var(--bg-color);
+    user-select: none;
+    -webkit-user-select: none;
+    pointer-events: auto;
+}
+
+/* Add left gradient overlay */
+.quotes-carousel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 15%;
+    height: 100%;
+    background: linear-gradient(to right, var(--bg-color) 0%, transparent 100%);
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* Add right gradient overlay */
+.quotes-carousel::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 15%;
+    height: 100%;
+    background: linear-gradient(to left, var(--bg-color) 0%, transparent 100%);
+    z-index: 10;
+    pointer-events: none;
+}
+
+.quotes-track {
+    display: flex;
+    gap: 10px;
+    animation: scroll 100s linear infinite;
+    width: calc((450px * 20) + (10px * 19));
+    padding: 1rem 8vw;
+    pointer-events: auto;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+    align-items: stretch;
+}
+
+.quotes-carousel:hover .quotes-track {
+    animation-play-state: paused;
 }
 
 .quote-item {
-    flex: 0 0 300px;
-    padding: 2rem;
-    background: #f5f5f5;
-    border-radius: 8px;
+    flex: 0 0 450px;
+    padding: 2.5rem;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(25px) saturate(180%);
+    -webkit-backdrop-filter: blur(25px) saturate(180%);
+    border-radius: 25px;
+    box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.06),
+                0 4px 16px -8px rgba(0, 0, 0, 0.03),
+                0 0 0 1px rgba(255, 255, 255, 0.5);
+    user-select: none;
+    -webkit-user-select: none;
+    pointer-events: auto;
+    touch-action: none;
+    display: flex;
+    align-items: flex-start;
+}
+
+.quote-item p {
+    font-family: 'ITC Avant Garde Pro', sans-serif;
+    font-size: 1.35rem;
+    line-height: 1.5;
+    color: var(--text-color);
+    margin: 0;
 }
 
 /* Features Section */
 .features {
-    padding: 8rem 5% 4rem 5%;
-    max-width: 1200px;
-    margin: 0 auto;
+    padding: 0rem 8% 8rem 8%;
+    max-width: none;
+    margin: 0;
 }
 
 .features h2 {
     font-family: 'Redaction', serif;
-    font-size: 3rem;
-    margin-bottom: 3rem;
+    font-size: 4rem;
+    margin-bottom: 6rem;
     font-weight: bold;
+    max-width: calc(100% / 1.4);
+    margin-left: 0;
+    margin-right: 0;
 }
 
 .feature {
-    display: flex;
+    display: grid;
+    grid-template-columns: 12rem minmax(0, 1fr);
     gap: 2rem;
-    margin-bottom: 3rem;
+    margin-bottom: 5rem;
+    align-items: center;
+    max-width: calc(100% / 1.4);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.feature-number {
+    font-family: 'Redaction', serif;
+    font-size: 14rem;
+    font-weight: normal;
+    line-height: 1;
+    justify-self: end;
+    color: var(--text-color);
+    margin-top: 0;
+}
+
+.feature-content {
+    padding-top: 0;
+    align-self: center;
+    max-width: 80ch;
 }
 
 .feature h3 {
     font-family: 'Redaction', serif;
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: normal;
+    line-height: 1.1;
+}
+
+.feature p {
+    font-family: 'ITC Avant Garde Pro', sans-serif;
     font-size: 1.5rem;
-    margin-bottom: 1rem;
-    font-weight: bold;
+    line-height: 1.4;
+    color: var(--text-color);
 }
 
 /* FAQ Section */
@@ -699,6 +826,60 @@ footer {
         margin-bottom: 5%;
         margin-left: 5%;
     }
+
+    .challenges {
+        padding: 6rem 5% 6rem 5%;
+    }
+
+    .challenges h2 {
+        font-size: 3.5rem;
+        margin-bottom: 4rem;
+    }
+
+    .challenge {
+        grid-template-columns: 10rem minmax(0, 1fr);
+        gap: 1.5rem;
+    }
+
+    .challenge h3 {
+        font-size: 2.75rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .challenge p {
+        font-size: 1.35rem;
+    }
+
+    .features {
+        padding: 6rem 5% 6rem 5%;
+    }
+
+    .features h2 {
+        font-size: 3.5rem;
+        margin-bottom: 4rem;
+    }
+
+    .feature {
+        grid-template-columns: 10rem minmax(0, 1fr);
+        gap: 1.5rem;
+    }
+
+    .feature-number {
+        font-size: 11rem;
+    }
+
+    .feature h3 {
+        font-size: 2.75rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .feature p {
+        font-size: 1.35rem;
+    }
+
+    .number {
+        font-size: 11rem;
+    }
 }
 
 @media (max-width: 768px) {
@@ -710,7 +891,7 @@ footer {
         font-size: 2.5rem;
     }
     
-    .pain-point, .feature {
+    .challenge, .feature {
         flex-direction: column;
         gap: 1rem;
     }
@@ -720,7 +901,7 @@ footer {
     }
 
     .number {
-        font-size: 2.5rem;
+        font-size: 8rem;
     }
 
     .hero {
@@ -752,6 +933,33 @@ footer {
 
     .hero p {
         font-size: 1.693rem;
+    }
+
+    .challenges {
+        padding: 4rem 5% 4rem 5%;
+    }
+
+    .challenges h2 {
+        font-size: 2.75rem;
+        margin-bottom: 3rem;
+    }
+
+    .challenge {
+        grid-template-columns: 7rem minmax(0, 1fr);
+        gap: 1rem;
+    }
+
+    .challenge h3 {
+        font-size: 2.25rem;
+        margin-bottom: 1rem;
+    }
+
+    .challenge p {
+        font-size: 1.25rem;
+    }
+
+    .feature-number {
+        font-size: 8rem;
     }
 }
 
