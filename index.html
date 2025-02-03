@@ -226,5 +226,24 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const missionSection = document.querySelector('.mission');
+            if (missionSection) {
+                observer.observe(missionSection);
+            }
+        });
+    </script>
 </body>
 </html> 

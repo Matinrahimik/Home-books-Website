@@ -454,7 +454,6 @@ body {
     -webkit-touch-callout: none;
     pointer-events: none;
     touch-action: none;
-    draggable: false;
 }
 
 /* Remove the hover and after effects */
@@ -739,22 +738,4 @@ html {
     scroll-padding-top: 100px;
 }
 
-/* Add Intersection Observer script */
-<script>
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('animate');
-        }
-    });
-}, {
-    threshold: 0.1
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-    const missionSection = document.querySelector('.mission');
-    if (missionSection) {
-        observer.observe(missionSection);
-    }
-});
-</script> 
+/* End of CSS */ 
