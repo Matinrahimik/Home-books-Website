@@ -235,7 +235,7 @@ body {
     margin-bottom: 0;
     color: var(--text-color);
     line-height: 1.3;
-    max-width: 45ch;
+    max-width: 41ch;
     opacity: 0;
     animation: fadeSlideUp 1s ease-out forwards;
     animation-delay: 0.3s;
@@ -272,7 +272,7 @@ body {
 .gallery {
     position: absolute;
     right: 0;
-    top: 65%;
+    top: 70%;
     transform: translateY(-45%);
     width: 52%;
     height: 110vh;
@@ -293,50 +293,178 @@ body {
 
 /* Mission Section */
 .mission {
-    padding: 4rem 5%;
-    max-width: 1200px;
-    margin: 0 auto;
+    padding: 4rem 8%;
+    max-width: none;
+    margin: 0;
+    opacity: 0;
+    transform: translateY(60px);
+    animation: fadeSlideUp 1.2s ease-out forwards;
+    animation-delay: 0.2s;
+    animation-play-state: paused;
+}
+
+.mission.animate {
+    animation-play-state: running;
 }
 
 .mission h2 {
     font-family: 'Redaction', serif;
-    font-size: 3rem;
+    font-size: 400%;
     margin-bottom: 2rem;
     font-weight: bold;
+    text-align: left;
+    max-width: calc(100% / 1.4);
+    opacity: 0;
+    transform: translateY(60px);
+    animation: fadeSlideUp 1.2s ease-out forwards;
+    animation-delay: 0.4s;
+    animation-play-state: paused;
+}
+
+.mission.animate h2 {
+    animation-play-state: running;
 }
 
 .mission p {
-    font-size: 1.1rem;
+    font-size: 244%;
     margin-bottom: 1.5rem;
+    text-align: left;
+    line-height: 1.3;
+    max-width: calc(100% / 1.4);
+    opacity: 0;
+    transform: translateY(60px);
+    animation: fadeSlideUp 1.2s ease-out forwards;
+    animation-delay: 0.6s;
+    animation-play-state: paused;
+}
+
+.mission.animate p {
+    animation-play-state: running;
 }
 
 /* User Section */
 .user {
-    padding: 4rem 5%;
+    padding: 4rem 8%;
+    max-width: none;
+    margin: 0;
     background-color: var(--bg-color);
 }
 
 .user h2 {
     font-family: 'Redaction', serif;
-    font-size: 3rem;
+    font-size: 400%;
     margin-bottom: 2rem;
     font-weight: bold;
+    max-width: calc(100% / 1.4);
+}
+
+.user p {
+    font-size: 244%;
+    margin-bottom: 1.5rem;
+    text-align: left;
+    line-height: 1.3;
+    max-width: calc(100% / 1.4);
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(calc(-300px * 10 - 10px * 10)); /* Start from the end */
+    }
+    100% {
+        transform: translateX(0); /* Move to the start */
+    }
 }
 
 .image-carousel {
     display: flex;
-    gap: 2rem;
-    overflow-x: auto;
     padding: 2rem 0;
-    scroll-snap-type: x mandatory;
+    width: 100vw;
+    margin-left: calc(-8vw);
+    overflow: hidden;
+    position: relative;
+    background: var(--bg-color);
+    user-select: none;
+    -webkit-user-select: none;
+    pointer-events: none;
+}
+
+/* Add left gradient overlay */
+.image-carousel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 15%;
+    height: 100%;
+    background: linear-gradient(to right, var(--bg-color) 0%, transparent 100%);
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* Add right gradient overlay */
+.image-carousel::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 15%;
+    height: 100%;
+    background: linear-gradient(to left, var(--bg-color) 0%, transparent 100%);
+    z-index: 10;
+    pointer-events: none;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 10px;
+    animation: scroll 80s linear infinite;
+    width: calc((300px * 20) + (10px * 19));
+    padding: 1rem 8vw;
+    pointer-events: none;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .carousel-item {
     flex: 0 0 300px;
-    height: 200px;
-    background: #eee;
-    border-radius: 8px;
-    scroll-snap-align: start;
+    height: 400px;
+    background: transparent;
+    border-radius: 25px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    -webkit-user-select: none;
+    pointer-events: none;
+    touch-action: none;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 25px;
+    opacity: 0.75;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-touch-callout: none;
+    pointer-events: none;
+    touch-action: none;
+    draggable: false;
+}
+
+/* Remove the hover and after effects */
+.carousel-item:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.carousel-item::after {
+    display: none;
 }
 
 /* Pain Points Section */
@@ -609,4 +737,24 @@ h1, h2, h3, h4, h5, h6, p, .number, .faq-question {
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 100px;
-} 
+}
+
+/* Add Intersection Observer script */
+<script>
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('animate');
+        }
+    });
+}, {
+    threshold: 0.1
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const missionSection = document.querySelector('.mission');
+    if (missionSection) {
+        observer.observe(missionSection);
+    }
+});
+</script> 

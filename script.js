@@ -64,4 +64,24 @@ function setupCarousel(carouselClass) {
 
 // Setup carousels
 setupCarousel('.image-carousel');
-setupCarousel('.quotes-carousel'); 
+setupCarousel('.quotes-carousel');
+
+// Create intersection observer for animation triggers
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('animate');
+        }
+    });
+}, {
+    threshold: 0.25,
+    rootMargin: '-50px'
+});
+
+// Observe mission section when document is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    const missionSection = document.querySelector('.mission');
+    if (missionSection) {
+        observer.observe(missionSection);
+    }
+}); 
