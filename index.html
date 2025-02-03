@@ -5,11 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HomeBooks - Organize Your Personal Library</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        @font-face {
+            font-family: 'Redaction';
+            src: url('Assets/Fonts/Titles/Redaction-Regular.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Redaction';
+            src: url('Assets/Fonts/Titles/Redaction-Bold.woff2') format('woff2');
+            font-weight: bold;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Redaction';
+            src: url('Assets/Fonts/Titles/Redaction-Italic.woff2') format('woff2');
+            font-weight: normal;
+            font-style: italic;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'ITC Avant Garde Pro';
+            src: url('Assets/Fonts/Text/ITCAvantGardePro-Bk.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'ITC Avant Garde Pro';
+            src: url('Assets/Fonts/Text/ITCAvantGardePro-Bold.otf') format('opentype');
+            font-weight: bold;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'ITC Avant Garde Pro';
+            src: url('Assets/Fonts/Text/ITCAvantGardePro-Md.otf') format('opentype');
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap;
+        }
+    </style>
 </head>
-<body>
+<body id="top">
     <!-- Navigation -->
     <nav class="navbar">
-        <div class="logo">HomeBooks</div>
+        <div class="logo">
+            <a href="#hero">
+                <img src="Assets/Logo/logo.svg" alt="HomeBooks Logo" height="32">
+            </a>
+        </div>
         <div class="nav-links">
             <a href="#mission">Mission</a>
             <a href="#user">User</a>
@@ -21,16 +74,15 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <h1>Organize your home books in minutes, not days!</h1>
-        <p>Catalog hundreds of books in minutes with AI, organize your notes, and discover new reads—all in one app!</p>
-        <button class="demo-btn">Book a demo</button>
-        <div class="gallery">
-            <!-- Gallery placeholders will be added here -->
-            <div class="gallery-item"></div>
-            <div class="gallery-item"></div>
-            <div class="gallery-item"></div>
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Organize your home books<br>in minutes, not days!</h1>
+                <p>Catalog hundreds of books in minutes with AI,<br>organize your notes, and discover new reads<br>—all in one app!</p>
+            </div>
+            <button class="demo-btn">Book a demo</button>
         </div>
+        <div class="gallery"></div>
     </section>
 
     <!-- Mission Section -->

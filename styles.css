@@ -1,3 +1,46 @@
+/* Font declarations */
+@font-face {
+    font-family: 'Redaction';
+    src: url('Assets/Fonts/Titles/Redaction-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Redaction';
+    src: url('Assets/Fonts/Titles/Redaction-Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Redaction';
+    src: url('Assets/Fonts/Titles/Redaction-Italic.woff2') format('woff2');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'ITC Avant Garde Pro';
+    src: url('Assets/Fonts/Text/ITCAvantGardePro-Bk.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ITC Avant Garde Pro';
+    src: url('Assets/Fonts/Text/ITCAvantGardePro-Bold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ITC Avant Garde Pro';
+    src: url('Assets/Fonts/Text/ITCAvantGardePro-Md.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+}
+
 /* Reset and base styles */
 * {
     margin: 0;
@@ -5,85 +48,247 @@
     box-sizing: border-box;
 }
 
+:root {
+    --text-color: #361813;
+    --bg-color: #FEFAF0;
+}
+
 body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: 'ITC Avant Garde Pro', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.6;
-    color: #333;
-    background-color: #fdf8f3;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+}
+
+/* Add navbar animation keyframes */
+@keyframes slideDown {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
 }
 
 /* Navigation */
 .navbar {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+    top: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 5%;
-    background-color: rgba(253, 248, 243, 0.9);
+    padding: 0.75rem;
+    padding-left: 1.5rem;
+    background-color: rgba(254, 246, 225, 0.8);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     z-index: 1000;
+    border-radius: 100px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    width: 84%;
+    border: 1px solid rgba(255, 255, 255, 1);
+    opacity: 0;
+    animation: slideDown 0.8s ease-out forwards;
+    animation-delay: 1.8s;
 }
 
 .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.logo a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 35.2px;
+    width: auto;
 }
 
 .nav-links {
     display: flex;
-    gap: 2rem;
+    gap: 1rem;
     align-items: center;
+    padding-right: 0;
+}
+
+.nav-links a:last-of-type {
+    margin-right: 0rem;
 }
 
 .nav-links a {
+    font-family: 'ITC Avant Garde Pro', sans-serif;
+    font-weight: 500;
     text-decoration: none;
-    color: #333;
+    color: var(--text-color);
+    font-size: 1.1rem;
+    position: relative;
+    padding: 0.8rem 0.8rem 0.4rem 0.8rem;
+    border-radius: 100px;
+    transition: all 0.3s ease;
+    line-height: 1;
 }
 
-.demo-btn {
-    background-color: #2a1810;
-    color: white;
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 4px;
+.nav-links a:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    transform: scale(1.05);
+}
+
+.nav-links a::after {
+    content: none;
+}
+
+.nav-links .demo-btn {
+    font-family: 'ITC Avant Garde Pro', sans-serif;
+    background-color: transparent;
+    color: var(--text-color);
+    padding: 0.9rem 1.5rem 0.6rem 1.5rem;
+    border: 1.5px solid var(--text-color);
+    border-radius: 28px;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    font-weight: 500;
+    margin-left: 0;
+    line-height: 1;
+}
+
+.nav-links .demo-btn:hover {
+    background-color: var(--text-color);
+    color: var(--bg-color);
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(42, 24, 16, 0.1);
 }
 
 /* Hero Section */
 .hero {
-    padding: 8rem 5% 4rem;
-    text-align: center;
+    min-height: 100vh;
+    position: relative;
+    width: 100%;
+    padding: 0 8%;
+    display: flex;
+    align-items: center;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: left;
+    width: 85%;
+    padding-top: 80px;
+    display: flex;
+    flex-direction: column;
+    min-height: 85vh;
+}
+
+/* Animation keyframes */
+@keyframes fadeSlideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInFromRight {
+    0% {
+        opacity: 0;
+        transform: translateX(100px) translateY(-45%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0) translateY(-45%);
+    }
+}
+
+.hero-text {
+    transform: translateY(18%);
 }
 
 .hero h1 {
-    font-size: 3.5rem;
-    margin-bottom: 1.5rem;
-    line-height: 1.2;
+    font-family: 'Redaction', serif;
+    font-size: 6rem;
+    margin-bottom: 2.2rem;
+    line-height: 1;
+    font-weight: bold;
+    color: var(--text-color);
+    letter-spacing: -0.02em;
+    max-width: 20ch;
+    opacity: 0;
+    animation: fadeSlideUp 1s ease-out forwards;
 }
 
 .hero p {
-    font-size: 1.25rem;
-    margin-bottom: 2rem;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+    font-family: 'ITC Avant Garde Pro', sans-serif;
+    font-size: 2.577rem;
+    margin-bottom: 0;
+    color: var(--text-color);
+    line-height: 1.3;
+    max-width: 45ch;
+    opacity: 0;
+    animation: fadeSlideUp 1s ease-out forwards;
+    animation-delay: 0.3s;
+}
+
+.hero .demo-btn {
+    font-family: 'ITC Avant Garde Pro', sans-serif;
+    background-color: var(--text-color);
+    color: var(--bg-color);
+    padding: 1.3rem 2.2rem 1rem 2.2rem;
+    border: 1.5px solid var(--text-color);
+    border-radius: 28px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    margin-top: auto;
+    margin-bottom: 4%;
+    margin-left: 0%;
+    align-self: flex-start;
+    opacity: 0;
+    animation: fadeSlideUp 1s ease-out forwards;
+    animation-delay: 2.6s;
+    line-height: 1;
+}
+
+.hero .demo-btn:hover {
+    background-color: transparent;
+    color: var(--text-color);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(42, 24, 16, 0.08);
 }
 
 .gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-top: 4rem;
+    position: absolute;
+    right: 0;
+    top: 65%;
+    transform: translateY(-45%);
+    width: 52%;
+    height: 110vh;
+    background-image: url('Assets/Hero section/Hero grid.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right center;
+    z-index: 1;
+    opacity: 0;
+    animation: slideInFromRight 1.2s ease-out forwards;
+    animation-delay: 0.8s;
 }
 
+/* Remove all the gallery item styles since we're using an image */
 .gallery-item {
-    background: #eee;
-    height: 200px;
-    border-radius: 8px;
+    display: none;
 }
 
 /* Mission Section */
@@ -94,14 +299,28 @@ body {
 }
 
 .mission h2 {
-    font-size: 2.5rem;
+    font-family: 'Redaction', serif;
+    font-size: 3rem;
     margin-bottom: 2rem;
+    font-weight: bold;
+}
+
+.mission p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
 }
 
 /* User Section */
 .user {
     padding: 4rem 5%;
-    background-color: #fff;
+    background-color: var(--bg-color);
+}
+
+.user h2 {
+    font-family: 'Redaction', serif;
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    font-weight: bold;
 }
 
 .image-carousel {
@@ -127,6 +346,13 @@ body {
     margin: 0 auto;
 }
 
+.pain-points h2 {
+    font-family: 'Redaction', serif;
+    font-size: 3rem;
+    margin-bottom: 3rem;
+    font-weight: bold;
+}
+
 .pain-point {
     display: flex;
     gap: 2rem;
@@ -134,15 +360,31 @@ body {
 }
 
 .number {
-    font-size: 3rem;
+    font-family: 'Redaction', serif;
+    font-size: 3.5rem;
     font-weight: bold;
     line-height: 1;
+}
+
+.pain-point h3 {
+    font-family: 'Redaction', serif;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
 }
 
 /* Quotes Section */
 .quotes {
     padding: 4rem 5%;
-    background-color: #fff;
+    background-color: var(--bg-color);
+}
+
+.quotes h2 {
+    font-family: 'Redaction', serif;
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    font-weight: bold;
+    text-align: center;
 }
 
 .quotes-carousel {
@@ -166,16 +408,38 @@ body {
     margin: 0 auto;
 }
 
+.features h2 {
+    font-family: 'Redaction', serif;
+    font-size: 3rem;
+    margin-bottom: 3rem;
+    font-weight: bold;
+}
+
 .feature {
     display: flex;
     gap: 2rem;
     margin-bottom: 3rem;
 }
 
+.feature h3 {
+    font-family: 'Redaction', serif;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
 /* FAQ Section */
 .faq {
     padding: 4rem 5%;
-    background-color: #fff;
+    background-color: var(--bg-color);
+}
+
+.faq h2 {
+    font-family: 'Redaction', serif;
+    font-size: 3rem;
+    margin-bottom: 3rem;
+    font-weight: bold;
+    text-align: center;
 }
 
 .faq-container {
@@ -189,9 +453,12 @@ body {
 }
 
 .faq-question {
+    font-family: 'Redaction', serif;
     font-weight: bold;
+    font-size: 1.25rem;
     cursor: pointer;
     padding: 1rem 0;
+    color: var(--text-color);
 }
 
 .faq-answer {
@@ -204,9 +471,69 @@ footer {
     text-align: center;
     padding: 2rem 5%;
     background-color: #fdf8f3;
+    font-family: 'ITC Avant Garde Pro', sans-serif;
 }
 
-/* Responsive Design */
+/* Responsive adjustments */
+@media (max-width: 1400px) {
+    .hero h1 {
+        font-size: 5rem;
+    }
+    
+    .hero p {
+        font-size: 2.235rem;
+    }
+}
+
+@media (max-width: 1024px) {
+    .hero {
+        flex-direction: column;
+        padding: 2rem 5%;
+        gap: 3rem;
+        overflow: hidden;
+    }
+
+    .hero-content {
+        width: 100%;
+        padding-top: 0;
+        transform: translateY(0);
+    }
+
+    .gallery {
+        position: relative;
+        width: 100%;
+        height: 60vh;
+        transform: none;
+        top: 0;
+        background-position: center;
+        opacity: 0;
+        animation: fadeSlideUp 1s ease-out forwards;
+        animation-delay: 0.8s;
+    }
+
+    .hero h1 {
+        font-size: 3.85rem;
+    }
+    
+    .hero p {
+        font-size: 1.964rem;
+    }
+    
+    .demo-btn {
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+    }
+
+    .hero-text {
+        transform: translateY(10%);
+    }
+
+    .hero .demo-btn {
+        margin-bottom: 5%;
+        margin-left: 5%;
+    }
+}
+
 @media (max-width: 768px) {
     .nav-links {
         display: none;
@@ -220,4 +547,66 @@ footer {
         flex-direction: column;
         gap: 1rem;
     }
+
+    h2 {
+        font-size: 2.5rem !important;
+    }
+
+    .number {
+        font-size: 2.5rem;
+    }
+
+    .hero {
+        height: 50vh;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, 1fr);
+    }
+
+    .gallery-item:nth-child(1),
+    .gallery-item:nth-child(2),
+    .gallery-item:nth-child(3) {
+        grid-column: 1;
+        grid-row: auto;
+    }
+
+    .gallery {
+        aspect-ratio: 1/1;
+        gap: 0.75rem;
+    }
+
+    .hero-text {
+        transform: translateY(5%);
+    }
+
+    .hero .demo-btn {
+        margin-bottom: 3%;
+        margin-left: 3%;
+    }
+
+    .hero p {
+        font-size: 1.693rem;
+    }
+}
+
+/* Update all text colors to use the variable */
+h1, h2, h3, h4, h5, h6, p, .number, .faq-question {
+    color: var(--text-color);
+}
+
+/* Update section backgrounds */
+.user, .quotes, .faq {
+    background-color: var(--bg-color);
+}
+
+/* Update button styles */
+.demo-btn {
+    background-color: var(--text-color);
+    color: var(--bg-color);
+    font-weight: 500;
+}
+
+/* Add smooth scroll to html */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
 } 
