@@ -283,20 +283,7 @@ body {
 }
 
 .gallery {
-    position: absolute;
-    right: 0;
-    top: 70%;
-    transform: translateY(-45%);
-    width: 52%;
-    height: 110vh;
-    background-image: url('./Assets/Hero section/Hero grid.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: right center;
-    z-index: 1;
-    opacity: 0;
-    animation: slideInFromRight 1.2s ease-out forwards;
-    animation-delay: 0.8s;
+    display: none;
 }
 
 /* Remove all the gallery item styles since we're using an image */
@@ -373,6 +360,7 @@ body {
     animation: fadeSlideUp 1.2s ease-out forwards;
     animation-delay: 0.2s;
     animation-play-state: paused;
+    position: relative;
 }
 
 .mission.animate {
@@ -425,6 +413,7 @@ body {
     animation: fadeSlideUp 1.2s ease-out forwards;
     animation-delay: 0.2s;
     animation-play-state: paused;
+    position: relative;
 }
 
 .user.animate {
@@ -463,6 +452,23 @@ body {
 
 .user.animate p {
     animation-play-state: running;
+}
+
+/* Add background image between mission and user sections */
+.user::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: -35%;
+    width: 36%;
+    height: 81vh;
+    background-image: url('./Assets/Grid/Hero grid.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right center;
+    z-index: -1;
+    opacity: 0.8;
+    pointer-events: none;
 }
 
 @keyframes scroll {
